@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #FFB6C1, #87CEFA);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden; /* Disable scroll */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+.container {
+    background: #ffffff;
+    color: #333;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    transition: border 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.form-group select {
+    background-color: #f8f8f8;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+button {
+    flex: 1;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.convert {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+button.convert:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+button.reset {
+    background-color: #FF6347;
+    color: #fff;
+}
+
+button.reset:hover {
+    background-color: #e53e32;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.output {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4CAF50;
+    margin-top: 25px;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .output {
+        font-size: 1rem;
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Elegant Unit Converter</h1>
+    </header>
+
+    <main class="container">
+        <form id="converterForm">
+            <div class="form-group">
+                <label for="inputValue">Input Value:</label>
+                <input type="number" id="inputValue" placeholder="Enter value to convert" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputUnit">Convert From:</label>
+                <select id="inputUnit">
+                    <option>Select Unit</option>
+                    <option value="millimeter">Millimeter</option>
+                    <option value="centimeter">Centimeter</option>
+                    <option value="meter">Meter</option>
+                    <option value="kilometer">Kilometer</option>
+                    <option value="foot">Foot</option>
+                    <option value="mile">Mile</option>
+                    <option value="yard">Yard</option>
+                    <option value="inch">Inch</option>
+                    <option value="square meter">Square Meter</option>
+                    <option value="square kilometer">Square Kilometer</option>
+                    <option value="square centimeter">Square Centimeter</option>
+                    <option value="square millimeter">Square Millimeter</option>
+                    <option value="are">Are</option>
+                    <option value="hectare">Hectare</option>
+                    <option value="acre">Acre</option>
+                    <option value="square mile">Square Mile</option>
+                    <option value="square foot">Square Foot</option>
+                    <option value="cubic meter">Cubic Meter</option>
+                    <option value="cubic centimeter">Cubic Centimeter</option>
+                    <option value="litre">Litre</option>
+                    <option value="millilitre">Millilitre</option>
+                    <option value="gallon">Gallon</option>
+                    <option value="gram">Gram</option>
+                    <option value="kilogram">Kilogram</option>
+                    <option value="milligram">Milligram</option>
+                    <option value="quintal">Quintal</option>
+                    <option value="ton">Ton</option>
+                    <option value="pound">Pound</option>
+                    <option value="ounce">Ounce</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="outputUnit">Convert To:</label>
+                <select id="outputUnit">
+                    <option>Select Unit</option>
+                    <option value="millimeter">Millimeter</option>
+                    <option value="centimeter">Centimeter</option>
+                    <option value="meter">Meter</option>
+                    <option value="kilometer">Kilometer</option>
+                    <option value="foot">Foot</option>
+                    <option value="mile">Mile</option>
+                    <option value="yard">Yard</option>
+                    <option value="inch">Inch</option>
+                    <option value="square meter">Square Meter</option>
+                    <option value="square kilometer">Square Kilometer</option>
+                    <option value="square centimeter">Square Centimeter</option>
+                    <option value="square millimeter">Square Millimeter</option>
+                    <option value="are">Are</option>
+                    <option value="hectare">Hectare</option>
+                    <option value="acre">Acre</option>
+                    <option value="square mile">Square Mile</option>
+                    <option value="square foot">Square Foot</option>
+                    <option value="cubic meter">Cubic Meter</option>
+                    <option value="cubic centimeter">Cubic Centimeter</option>
+                    <option value="litre">Litre</option>
+                    <option value="millilitre">Millilitre</option>
+                    <option value="gallon">Gallon</option>
+                    <option value="gram">Gram</option>
+                    <option value="kilogram">Kilogram</option>
+                    <option value="milligram">Milligram</option>
+                    <option value="quintal">Quintal</option>
+                    <option value="ton">Ton</option>
+                    <option value="pound">Pound</option>
+                    <option value="ounce">Ounce</option>
+                </select>
+            </div>
+
+            <div class="buttons">
+                <button type="button" class="convert" onclick="convertUnits()">Convert</button>
+                <button type="reset" class="reset" onclick="resetForm()">Reset</button>
+            </div>
+        </form>
+
+        <div class="output" id="outputValue"></div>
+    </main>
+
+    <script>
+        const unitCategories = {
+            length: ["millimeter", "centimeter", "meter", "kilometer", "foot", "mile", "yard", "inch"],
+            area: ["square meter", "square kilometer", "square centimeter", "square millimeter", "are", "hectare", "acre", "square mile", "square foot"],
+            volume: ["cubic meter", "cubic centimeter", "litre", "millilitre", "gallon"],
+            weight: ["gram", "kilogram", "milligram", "quintal", "ton", "pound", "ounce"]
+        };
+
+        const unitConversions = {
+            "millimeter": 0.001,
+            "centimeter": 0.01,
+            "meter": 1.0,
+            "kilometer": 1000.0,
+            "foot": 0.3048,
+            "mile": 1609.344,
+            "yard": 0.9144,
+            "inch": 0.0254,
+            "square meter": 1.0,
+            "square kilometer": 1000000.0,
+            "square centimeter": 0.0001,
+            "square millimeter": 0.000001,
+            "are": 100.0,
+            "hectare": 10000.0,
+            "acre": 4046.856,
+            "square mile": 2590000.0,
+            "square foot": 0.0929,
+            "cubic meter": 1000.0,
+            "cubic centimeter": 0.001,
+            "litre": 1.0,
+            "millilitre": 0.001,
+            "gallon": 3.785,
+            "gram": 1.0,
+            "kilogram": 1000.0,
+            "milligram": 0.001,
+            "quintal": 100000.0,
+            "ton": 1000000.0,
+            "pound": 453.592,
+            "ounce": 28.3495
+        };
+
+        const categoryMapping = {};
+        for (const [category, units] of Object.entries(unitCategories)) {
+            units.forEach(unit => categoryMapping[unit] = category);
+        }
+
+        document.getElementById("inputUnit").addEventListener("change", function () {
+            const inputUnit = this.value;
+            const outputUnitSelect = document.getElementById("outputUnit");
+
+            if (inputUnit === "Select Unit") {
+                outputUnitSelect.innerHTML = "<option>Select Unit</option>";
+                return;
+            }
+
+            const relatedCategory = categoryMapping[inputUnit];
+            const relatedUnits = unitCategories[relatedCategory];
+
+            outputUnitSelect.innerHTML = `<option>Select Unit</option>`;
+            relatedUnits.forEach(unit => {
+                const option = document.createElement("option");
+                option.value = unit;
+                option.textContent = unit[0].toUpperCase() + unit.slice(1);
+                outputUnitSelect.appendChild(option);
+            });
+        });
+
+        function convertUnits() {
+            const inputValue = parseFloat(document.getElementById("inputValue").value);
+            const inputUnit = document.getElementById("inputUnit").value;
+            const outputUnit = document.getElementById("outputUnit").value;
+            const outputElement = document.getElementById("outputValue");
+
+            if (isNaN(inputValue) || inputUnit === "Select Unit" || outputUnit === "Select Unit") {
+                outputElement.textContent = "Please provide a valid input and select both units.";
+                return;
+            }
+
+            const baseValue = inputValue * unitConversions[inputUnit];
+            const convertedValue = baseValue / unitConversions[outputUnit];
+
+            outputElement.textContent = `Converted Value: ${convertedValue.toFixed(2)} ${outputUnit}`;
+        }
+
+        function resetForm() {
+            document.getElementById("outputValue").textContent = "";
+            document.getElementById("outputUnit").innerHTML = "<option>Select Unit</option>";
+        }
+    </script>
+
+</body>
+
+</html>
