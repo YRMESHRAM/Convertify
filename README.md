@@ -65,8 +65,8 @@ Convertify is a sleek, responsive, and user-friendly unit converter that provide
 
 ## Reference 
 
-For reference, I have created a demo **GUI** application using **Python**. 
-The reference file has been added to the repository.
+- For reference, I have created a demo **GUI** application using **Python**. 
+- The reference file has been added to the repository.
 ## Future Enhancements
 
 - Add support for additional unit categories, such as temperature and time.
