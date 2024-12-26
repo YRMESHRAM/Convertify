@@ -63,32 +63,6 @@ Convertify is a sleek, responsive, and user-friendly unit converter that provide
 
 ---
 
-## Contributing
-
-We welcome contributions! To contribute:
-
-1. Fork the repository.
-2. Create a new branch:
-
-   ```bash
-   git checkout -b feature-name
-   ```
-
-3. Make your changes and commit them:
-
-   ```bash
-   git commit -m "Add new feature"
-   ```
-
-4. Push to your branch:
-
-   ```bash
-   git push origin feature-name
-   ```
-
-5. Submit a pull request for review.
-
----
 
 ## Future Enhancements
 
